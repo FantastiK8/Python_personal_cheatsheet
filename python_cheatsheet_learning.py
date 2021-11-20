@@ -67,6 +67,7 @@ f"{name} name is {len(name)} characteurs long." # "Kat is 3 characteurs long."
 #https://realpython.com/linked-lists-python/
 # "How to Use Doubly Linked Lists" is at the same website but much lower
 # another link with some same logic for single linkedlists https://www.tutorialspoint.com/python_data_structure/python_linked_lists.htm
+# https://stackabuse.com/python-linked-lists/
 ###################################
 # Practical Applications: used to implement QUEUES, STACKS, GRAPHS or
 # LIFECYCLE MANAGEMENT for an operating system application
@@ -451,7 +452,7 @@ deque([{'data': 'a'}, {'data': 'b'}])
 # https://note.nkmk.me/en/python-list-append-extend-insert/
 # https://www.programiz.com/python-programming/methods/list/copy
 # this link has valid explanations of each METHOD of list https://www.programiz.com/python-programming/methods/list/remove
-
+# this link has many other things from python!!! https://www.learnbyexample.org/python-list/
 ###################################
 
 #####Python List METHODS:
@@ -1002,7 +1003,7 @@ del my_tuple
 
 
 ###################################
-#  
+#  RANDOM
 ###################################
 
 
@@ -1025,4 +1026,13 @@ del my_tuple
 
 string[1:] # means skippping the first letter in the string.
 
+######
+## How to start a for loop at index 1 in Python
+a_list = ["a", "b", "c"]
 
+#Iterate through `a_list` starting at index `1`
+for item in a_list[1:] :
+    print(item)
+# OUTPUT
+# b
+# c
