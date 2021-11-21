@@ -61,6 +61,12 @@ f"{name} name is {len(name)} characteurs long." # "Kat is 3 characteurs long."
 "Kat" is "Kat" # => True
 "Hello" is "Kat" # => False
 
+# to reverse a part of the string in place 
+a = [1,2,3,4,5]
+a[2:4] = reversed(a[2:4])  # This works!
+a[2:4] = [0,0]             # This works too.
+a[2:4] = a[2:4][::-1]           # This works 
+
 
 ###################################
 # Single LinkedList 
@@ -358,23 +364,6 @@ Exception: Node with data 'a' not found
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ####################
 # collections.deque
 # https://realpython.com/linked-lists-python/
@@ -446,387 +435,6 @@ deque([{'data': 'a'}, {'data': 'b'}])
 #Adding or removing elements from both ends of the list is pretty 
 # straightforward using the deque object. Now you’re ready to learn 
 # how to use collections.deque to implement a queue or a stack.
-
-###################################
-# LISTS and ARRAYS
-# https://note.nkmk.me/en/python-list-append-extend-insert/
-# https://www.programiz.com/python-programming/methods/list/copy
-# this link has valid explanations of each METHOD of list https://www.programiz.com/python-programming/methods/list/remove
-# this link has many other things from python!!! https://www.learnbyexample.org/python-list/
-###################################
-
-#####Python List METHODS:
-
-# Python List index()
-# Python List append()
-# Python List extend()
-# Python List insert()
-# Python List remove()
-# Python List count()
-# Python List pop()
-# Python List reverse()
-# Python List sort()
-# Python List copy()
-# Python List clear()
-
-
-# Add an item to the end: append()
-# Combine lists: extend(), + operator
-# Insert an item at specified index: insert()
-# Add another list or tuple at specified index: slice
-# NOTE insert() is an O(n) operation and is not efficient. 
-
-# For removing elements from a list: 
-# Remove a specific item from the list .remove() 
-# Remove the last item .pop(). BUT ALSO WORKS AT SPECIFIC POSSITION .pop(index)
-# 
-#examples: 
-### .append()
-
-l = list(range(3))
-print(l)
-# [0, 1, 2]
-
-l.append(100)
-print(l)
-# [0, 1, 2, 100]
-
-l.append('new')
-print(l)
-# [0, 1, 2, 100, 'new']
-
-# A list is also added as one item, not combined.
-l.append([3, 4, 5])
-print(l)
-# [0, 1, 2, 100, 'new', [3, 4, 5]]
-
-### extend(), + operator
-# You can combine another list or tuple at the end of the list with extend().
-#  All items are added to the end of the original list.
-
-l = list(range(3))
-print(l)
-# [0, 1, 2]
-
-l.extend([100, 101, 102])
-print(l)
-# [0, 1, 2, 100, 101, 102]
-
-l.extend((-1, -2, -3))
-print(l)
-# [0, 1, 2, 100, 101, 102, -1, -2, -3]
-
-#In the case of a string, each character is added one by one.
-
-l.extend('new')
-print(l)
-# [0, 1, 2, 100, 101, 102, -1, -2, -3, 'n', 'e', 'w']
-
-
-# insert().
-# Set the index for the first parameter and the item to be inserted for 
-# the second parameter. The index at the beginning is 0 (zero-based indexing).
-# For negative values, -1 means one before the end.
-# NOTE that insert() is an O(n) operation and is not efficient. 
-
-# NOTE The deque type is provided in the standard library collections module 
-# as a type to add an item to the head with O(1). For example, if you want to treat data as a queue (FIFO), it is more efficient to use deque.
-
-l = list(range(3))
-print(l)
-# [0, 1, 2]
-
-l.insert(0, 100)
-print(l)
-# [100, 0, 1, 2]
-
-l.insert(-1, 200)
-print(l)
-# [100, 0, 1, 200, 2]
-
-# the list is added as a single item, not combined.
-
-l.insert(0, [-1, -2, -3])
-print(l)
-# [[-1, -2, -3], 100, 0, 1, 200, 2]
-
-
-##Add another list or tuple at specified index: slice
-#If you specify a range using slice and assign another list or tuple, 
-# all items will be added.
-
-l = list(range(3))
-print(l)
-# [0, 1, 2]
-
-l[1:1] = [100, 200, 300]
-print(l)
-# [0, 100, 200, 300, 1, 2]
-
-#You can also replace the original item. All items in the specified 
-# range are replaced.
-
-l = list(range(3))
-print(l)
-# [0, 1, 2]
-
-l[1:2] = [100, 200, 300]
-print(l)
-# [0, 100, 200, 300, 2]
-
-###
-#The remove() method removes the first matching element (which is passed as 
-# an argument) from the list.
-
-#Example
-# create a list
-prime_numbers = [2, 3, 5, 7, 9, 11]
-
-# remove 9 from the list
-prime_numbers.remove(9)
-
-
-# Updated prime_numbers List
-print('Updated List: ', prime_numbers)
-
-# Output: Updated List:  [2, 3, 5, 7, 11]
-
-
-
-####=======================
-# The copy() method returns a shallow copy of the list.
-
-#Example
-# mixed list
-prime_numbers = [2, 3, 5]
-
-# copying a list
-numbers = prime_numbers.copy()
-
-print('Copied List:', numbers)
-
-# Output: Copied List: [2, 3, 5]
-
-
-#---------------
-# Copy List Using Slicing Syntax
-# shallow copy using the slicing syntax
-
-# mixed list
-list = ['cat', 0, 6.7]
-
-# copying a list using slicing
-new_list = list[:]
-
-
-# Adding an element to the new list
-new_list.append('dog')
-
-# Printing new and old list
-print('Old List:', list)
-print('New List:', new_list)
-
-# Output
-
-# Old List: ['cat', 0, 6.7]
-# New List: ['cat', 0, 6.7, 'dog']
-
-
-
-#--------
-# List copy using = operator
-# NEVER USE = operator for coping lists!!!!
-# If you modify new_list, old_list is also modified. It is because 
-# the new list is referencing or pointing to the same old_list object.
-
-old_list = [1, 2, 3]
-
-# copy list using =
-new_list = old_list
-
-
-# add an element to list
-new_list.append('a')
-
-print('New List:', new_list)
-print('Old List:', old_list)
-
-#output
-# Old List: [1, 2, 3, 'a']
-# New List: [1, 2, 3, 'a']
-
-
-
-#==========================
-# The index() method returns the index of the specified element in the list.
-# Syntax of List index()
-# The syntax of the list index() method is:
-
-# list.index(element, start, end)
-# list index() parameters
-# The list index() method can take a maximum of three arguments:
-
-# element - the element to be searched
-# start (optional) - start searching from this index
-# end (optional) - search the element up to this index
-
-
-animals = ['cat', 'dog', 'rabbit', 'horse']
-
-# get the index of 'dog'
-index = animals.index('dog')
-
-print(index)
-
-#===========
-# List count()
-# The count() method returns the number of times the specified element appears in the list.
-# create a list
-numbers = [2, 3, 5, 2, 11, 2, 7]
-# check the count of 2
-count = numbers.count(2)
-print('Count of 2:', count)
-
-# Output: Count of 2: 3
-
-#===========
-# List reverse()
-# The reverse() method reverses the elements of the list.
-
-#Example
-# create a list of prime numbers
-prime_numbers = [2, 3, 5, 7]
-
-# reverse the order of list elements
-prime_numbers.reverse()
-print('Reversed List:', prime_numbers)
-# Output: Reversed List: [7, 5, 3, 2]
-
-
-####
-# Example 2: Reverse a List Using Slicing Operator
-# Operating System List
-systems = ['Windows', 'macOS', 'Linux']
-print('Original List:', systems)
-
-# Reversing a list	
-# Syntax: reversed_list = systems[start:stop:step] 
-reversed_list = systems[::-1]
-
-
-# updated list
-print('Updated List:', reversed_list)
-# Output
-# Original List: ['Windows', 'macOS', 'Linux']
-# Updated List: ['Linux', 'macOS', 'Windows']
-
-####
-
-# Printing Elements in Reversed Order
-for o in reversed(systems):
-    print(o)
-
-#==================
-### SORT AND SORTED!!!!
-# NOTE: The simplest difference between sort() and sorted() is: sort()
-#  doesn't return any value while, sorted() returns an iterable list.
-#The sort() method sorts the elements of a given list in a specific ascending 
-# or descending order.
-
-#Example
-prime_numbers = [11, 3, 7, 5, 2]
-
-# sort the list
-prime_numbers.sort()
-print(prime_numbers)
-
-# Output: [2, 3, 5, 7, 11]
-
-#####
-# sort() Syntax
-# The syntax of the sort() method is:
-list.sort(key=..., reverse=...)
-#Alternatively, you can also use Python's built-in sorted() function for 
-# the same purpose.
-sorted(list, key=..., reverse=...)
-
-# sort() Parameters
-# By default, sort() doesn't require any extra parameters. However, it has two 
-# optional parameters:
-
-# reverse - If True, the sorted list is reversed (or sorted in Descending order)
-# key - function that serves as a key for the sort comparison. 
-
-# sort() Return Value
-# The sort() method doesn't return any value. Rather, it changes the original list.
-
-# If you want a function to return the sorted list rather than change the original 
-# list, use sorted().
-
-# Sort in Descending order
-# The sort() method accepts a reverse parameter as an optional argument.
-
-# Setting reverse = True sorts the list in the descending order.
-
-list.sort(reverse=True)
-# Alternatively for sorted(), you can use the following code.
-
-sorted(list, reverse=True)
-
-##Example: Sort the list using key
-# sorting using custom key
-employees = [
-    {'Name': 'Alan Turing', 'age': 25, 'salary': 10000},
-    {'Name': 'Sharon Lin', 'age': 30, 'salary': 8000},
-    {'Name': 'John Hopkins', 'age': 18, 'salary': 1000},
-    {'Name': 'Mikhail Tal', 'age': 40, 'salary': 15000},
-]
-
-# custom functions to get employee info
-def get_name(employee):
-    return employee.get('Name')
-
-
-def get_age(employee):
-    return employee.get('age')
-
-
-def get_salary(employee):
-    return employee.get('salary')
-
-
-# sort by name (Ascending order)
-employees.sort(key=get_name)
-print(employees, end='\n\n')
-
-# sort by Age (Ascending order)
-employees.sort(key=get_age)
-print(employees, end='\n\n')
-
-# sort by salary (Descending order)
-employees.sort(key=get_salary, reverse=True)
-print(employees, end='\n\n')
-
-
-
-
-#====================
-
-fitted_bol_arr = [None] * len(nums) # WILL GIVE an array in the 
-#size of nums and all will be None or False depending what you want
-
-#### USE WHILE LOOP when you want to change the "i" index to different one.
-
-
-##############
-# (Python) In the latest python version you can merge two dicts using the merge operator: 
-x = {"key1": "value1 from x", "key2": "value2 from x"}
-y = {"key2": "value2 from y", "key3": "value3 from y"}
-x | y
-#{'key1': 'value1 from x', 'key2': 'value2 from y', 'key3': 'value3 from y'}
-y | x
-#{'key2': 'value2 from x', 'key3': 'value3 from y', 'key1': 'value1 from x'}
-
 
 
 
@@ -1006,7 +614,21 @@ del my_tuple
 #  RANDOM
 ###################################
 
+# (Python 3.2+) -  The lru_cache decorator allows easy function caching depending
+#  on the arguments, it can save time for for functions that are frequently called 
+#  with the same arguments.
+#Ex:
 
+from functools import lru_cache
+
+@lru_cache(maxsize=32)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+# >>> print([fib(n) for n in range(10)])
+# # Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
 
 ###################################
@@ -1036,3 +658,17 @@ for item in a_list[1:] :
 # OUTPUT
 # b
 # c
+
+#####
+
+
+#Slice notation in short:
+
+[ <first element to include> : <first element to exclude> : <step> ]
+list[start:stop:step_size]
+
+#If you want to include the first element when reversing a list, leave the 
+# middle element empty, like this:
+
+list[::-1]
+
