@@ -599,9 +599,161 @@ if __name__ == '__main__':
 
 
 
-
-
 #============================
+# N'TH NODE!
+# n’th node from the end of a Linked List
+# https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
+#============================
+# For example, input LinkedList = [a, b, c, d] 
+# n = 3, then output is “b”
+###
+#Method 1 (Use length of linked list) 
+###
+# 1) Calculate the length of Linked List. Let the length be len. 
+# 2) Print the (len – n + 1)th node from the beginning of the Linked List. 
+# Double pointer concept : First pointer is used to store the address of the variable 
+# and second pointer used to store the address of the first pointer. If we wish to 
+# change the value of a variable by a function, we pass pointer to it. And if we 
+# wish to change value of a pointer (i. e., it should start pointing to something 
+# else), we pass pointer to a pointer.
+
+# Simple Python3 program to find
+# n'th node from end
+class Node:
+    def __init__(self, new_data):
+        self.data = new_data
+        self.next = None
+      
+class LinkedList:
+    def __init__(self):
+        self.head = None
+  
+    # createNode and and make linked list
+    def push(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        self.head = new_node
+  
+    # Function to get the nth node from 
+    # the last of a linked list 
+    def printNthFromLast(self, n):
+        temp = self.head # used temp variable
+          
+        length = 0
+        while temp is not None:
+            temp = temp.next
+            length += 1
+          
+        # print count 
+        if n > length: # if entered location is greater 
+                       # than length of linked list
+            print('Location is greater than the' +
+                         ' length of LinkedList')
+            return
+        temp = self.head
+        for i in range(0, length - n):
+            temp = temp.next
+        print(temp.data)
+  
+# Driver Code        
+llist = LinkedList() 
+llist.push(20) 
+llist.push(4) 
+llist.push(15) 
+llist.push(35)
+llist.printNthFromLast(4)
+
+# Output: 35
+
+# or for the same method recursive code: 
+def printNthFromLast(head, n):
+      
+    i = 0
+    if (head == None):
+        return
+    printNthFromLast(head.next, n)
+    i+=1
+    if (i == n):
+        print(head.data)
+      
+###
+# Method 2 (Use two pointers) 
+# COMPLEXITY: Time Complexity: O(n) where n is the length of linked list. 
+###
+# Maintain two pointers – reference pointer and main pointer. Initialize both 
+# reference and main pointers to head. First, move the reference pointer to 
+# n nodes from head. Now move both pointers one by one until the reference 
+# pointer reaches the end. Now the main pointer will point to nth node from 
+# the end. Return the main pointer.
+# Below image is a dry run of the above approach: 
+# https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
+
+# Python program to find n'th node from end using slow
+# and fast pointer
+  
+# Node class 
+class Node:
+  
+    # Constructor to initialize the node object
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+  
+class LinkedList:
+  
+    # Function to initialize head
+    def __init__(self):
+        self.head = None
+  
+    # Function to insert a new node at the beginning
+    def push(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        self.head = new_node
+  
+    def printNthFromLast(self, n):
+        main_ptr = self.head
+        ref_ptr = self.head 
+      
+        count = 0 
+        if(self.head is not None):
+            while(count < n ):
+                if(ref_ptr is None):
+                    print "% d is greater than the 
+                           no. pf nodes in list" %(n)
+                    return
+   
+                ref_ptr = ref_ptr.next
+                count += 1
+      
+        if(ref_ptr is None):
+            self.head = self.head.next
+            if(self.head is not None):
+                 print "Node no. % d from last is % d " 
+                                   %(n, main_ptr.data)
+        else:
+            
+  
+          while(ref_ptr is not None):
+              main_ptr = main_ptr.next 
+              ref_ptr = ref_ptr.next
+  
+          print "Node no. % d from last is % d " 
+                                     %(n, main_ptr.data)
+  
+  
+# Driver program to test above function
+llist = LinkedList()
+llist.push(20)
+llist.push(4)
+llist.push(15)
+llist.push(35)
+  
+llist.printNthFromLast(4)
+# Output
+# Node no. 4 from last is 35 
+
+
 
 
 

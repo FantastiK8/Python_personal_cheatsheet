@@ -527,3 +527,69 @@ x | y
 #{'key1': 'value1 from x', 'key2': 'value2 from y', 'key3': 'value3 from y'}
 y | x
 #{'key2': 'value2 from x', 'key3': 'value3 from y', 'key1': 'value1 from x'}
+
+
+
+#============================
+
+# REMOVING AN ELEMENT FROM LIST WHILE ITTERATING
+
+# We can’t just iterate over the original list and delete elements while 
+# iterating because it messes the indexing
+
+for elem in list_of_num:  # NOTE --> this will NOT work
+#==========================
+#We want to delete elements from the list while iterating over it, based on some 
+# conditions like all occurrences of 54 and 55. For this, we need first to create 
+# a copy of the list, and then we will iterate over that copied list. Then for 
+# each element, we will check if we want to delete this element or not. If yes, 
+# then delete that element from the original list using the remove() function. 
+# For example
+
+list_of_num = [51, 52, 53, 54, 55, 56, 57, 58, 59]
+for elem in list(list_of_num):
+    if elem == 54 or elem == 55:
+        list_of_num.remove(elem)
+print(list_of_num)
+
+#Output
+#[51, 52, 53, 56, 57, 58, 59]
+
+#-------------
+#Remove elements from a list while iterating using list comprehension
+#-------------
+#We can iterate over the list and select elements we want to keep in the new 
+# list using list comprehension. Then we can assign the new list to the same 
+# reference variable, which was part to the original list. For example,
+
+list_of_num = [51, 52, 53, 54, 55, 56, 57, 58, 59]
+# Remove all occurrences of 54 & 55 from list
+list_of_num = [num for num in list_of_num if num != 54 and num !=55 ]
+print(list_of_num)
+
+# Output:
+# [51, 52, 53, 56, 57, 58, 59]
+# It created a new list, and then we assigned the new list back to the same 
+# reference variable. So it gave an effect that we have removed elements from 
+# the list while iterating over it. But internally, it created a new list.
+
+
+
+
+#-------------
+#Remove elements from a list while iterating using filter() function
+#-------------
+#Filter() function accepts two arguments,
+
+# First is a Lambda function or any other function
+# Second is the list from which we want to delete elements
+# It iterates over all the elements from the list and applies the given function over each list element. During iteration, it yields the elements for which the given function returns True. So we can use the filter() function to filter elements from a list while iterating over it. For example
+
+list_of_num = [51, 52, 53, 54, 55, 56, 57, 58, 59]
+# Remove all occurrences of 54 & 55 from list
+list_of_num = list(filter(lambda num: num != 54 and num !=55,
+                          list_of_num)
+                   )
+print(list_of_num)
+# Output:
+# [51, 52, 53, 56, 57, 58, 59]
