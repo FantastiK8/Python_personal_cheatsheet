@@ -1,5 +1,97 @@
+"""
+In-place means that the algorithm does not use extra space for manipulating 
+the input but may require a small though non-constant extra space for its 
+operation. Usually, this space is O(log n), though sometimes anything in 
+O(n) (Smaller than linear) is allowed.
+
+"""
+
 # to reverse a part of the string in place 
 a = [1,2,3,4,5]
 a[2:4] = reversed(a[2:4])  # This works!
 a[2:4] = [0,0]             # This works too.
 a[2:4] = a[2:4][::-1]      # This works 
+
+
+# An Not in-place Python program 
+# to reverse an array
+  
+''' Function to reverse arr[]
+    from start to end '''
+def revereseArray(arr, n):
+      
+    # Create a copy array 
+    # and store reversed
+    # elements
+    rev = n * [0]
+    for i in range(0, n):
+        rev[n - i - 1] = arr[i]
+              
+    # Now copy reversed
+    # elements back to arr[]
+    for i in range(0, n):
+        arr[i] = rev[i]
+          
+# Driver code
+if __name__ == "__main__":
+    arr = [1, 2, 3, 4, 5, 6]
+    n = len(arr)
+    print(*arr) 
+    revereseArray(arr, n); 
+    print("Reversed array is")
+    print(*arr) 
+      
+# This code is contributed
+
+
+
+
+######## IN PLACE ###########
+
+# An in-place Python program
+# to reverse an array
+  
+''' Function to reverse arr[]
+    from start to end'''
+def revereseArray(arr, n):
+      
+    for i in range(0, int(n / 2)):
+        arr[i], arr[n - i - 1] = arr[n - i - 1], arr[i]
+  
+  
+# Driver code
+if __name__ == "__main__":
+      
+    arr = [1, 2, 3, 4, 5, 6]
+    n = len(arr)
+    print(*arr)
+    revereseArray(arr, n) 
+    print("Reversed array is")
+    print(*arr)
+      
+
+
+#------------
+# Given an array a of n items, suppose we want an array that holds the same elements 
+# in reversed order and to dispose of the original. One seemingly simple way to do 
+# this is to create a new array of equal size, fill it with copies from a in the 
+# appropriate order and then delete a.
+
+function reverse(a[0..n - 1])
+     allocate b[0..n - 1]
+     for i from 0 to n - 1
+         b[n − 1 − i] := a[i]
+     return b
+
+
+#Unfortunately, this requires O(n) extra space for having the arrays a and b available 
+# simultaneously. Also, allocation and deallocation are often slow operations. Since we no 
+# longer need a, we can instead overwrite it with its own reversal using this in-place algorithm 
+# which will only need constant number (2) of integers for the auxiliary variables i and tmp, 
+# no matter how large the array is.
+
+ function reverse_in_place(a[0..n-1])
+     for i from 0 to floor((n-2)/2)
+         tmp := a[i]
+         a[i] := a[n − 1 − i]
+         a[n − 1 − i] := tmp
