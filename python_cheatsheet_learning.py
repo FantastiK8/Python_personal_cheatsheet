@@ -68,6 +68,13 @@ a[2:4] = [0,0]             # This works too.
 a[2:4] = a[2:4][::-1]           # This works 
 
 
+
+##### putting all char in a sentence/string into small letters.
+sentence = "Hello World"
+str.lower(sentence) 
+#output: sentence = "hello world"
+
+
 ##############################
 # BUFFER???
 
