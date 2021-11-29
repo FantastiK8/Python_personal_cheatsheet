@@ -38,3 +38,21 @@ ord(char) # gives the interger under which it is saved in the memory
 unique_char_arr_ord = [ord_ for ord_ in range(ord('a'), ord('z'))]   
 
 
+
+##############################
+# __slots__
+##############################
+(Python) Save RAM, use __slots__ . You can use __slots__ when defining your python classes to save up to 40-50% memory usage if you don't need to dynamically set class properties: https://book.pythontips.com/en/latest/__slots__magic.html 
+
+An iterator is any object in Python which has a next (Python2) or __next__ method defined
+    • Python ships with a module that contains a number of container data types called Collections. 
+    • Unlike dict, with defaultdict you do not need to check whether a key is present or not
+    • __slots__ can improve the efficiency of a python class by up to 40%!
+
+
+##############################
+# FIDN OUT IF ARRAY IS EMPTY
+##############################
+arr = []
+if not arr:
+    pass

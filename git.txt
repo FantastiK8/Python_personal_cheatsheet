@@ -1,0 +1,58 @@
+GIT TUTORIAL THE BEST!!!!!!!!!!!!
+https://learngitbranching.js.org/
+######################################################
+#####################################################
+######################################################
+
+
+###################
+Move one branch to another - including its commits
+###################
+
+git rebase A B
+--------------
+rebase - move
+A - to where (branch)
+B - what (branch)
+
+
+
+
+
+
+###################
+Moving a branch pointer to another commit -> git branch -f <branch-name> <sha1-commit-hash>
+https://www.w3docs.com/snippets/git/how-to-move-branch-pointer-to-different-commit.html
+###################
+
+If you want to move a non-checked out branch to another commit, the easiest way is running the git 
+branch command with -f option, which determines where the branch HEAD should be pointing to:
+
+****** git branch -f <branch-name> <sha1-commit-hash> ******
+
+Be careful as this won't work if the branch you are trying to move is your current branch.
+To move a branch pointer, run the following command:
+
+git update-ref -m "reset: Reset <branch-name> to <sha1-commit-hash>" refs/heads/<branch-name> <sha1-commit-hash>
+
+The git update-ref command updates the object name stored in a ref safely.
+
+
+###################
+Pick specific sha1-commit-hash and relocated them -> git cherry-pick <sha1-commit-hash> <sha1-commit-hash> ...
+###################
+
+******** git cherry-pick commithash1 commithash2 commithashn ***********
+
+this will take it in exact order i say can be C4, C2, C10 and relocate them under the branch/hash 
+I am currently another
+
+
+
+
+###################
+git checkout <hashCommit>    OR  git checkout <NameBranch>
+###################
+
+
+
