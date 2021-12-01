@@ -56,3 +56,11 @@ git checkout <hashCommit>    OR  git checkout <NameBranch>
 
 
 
+
+
+
+###################
+git merge <o/main>   (o - origin --> remote repository) 
+###################
+I suppose when on a certain branch then this command calls another branch/commit and merge
+with this current branch.
