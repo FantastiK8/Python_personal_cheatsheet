@@ -29,14 +29,21 @@ print([i**2 for i in range(10)])
 list = [i**2 for i in range(10)]
 
 ##############################
-# ORD()
+# ORD() https://www.programiz.com/python-programming/methods/built-in/ord
+# The ord() function returns an integer representing the Unicode character.
 ##############################
-
 char = 'a'
 ord(char) # gives the interger under which it is saved in the memory
 # example of creating an array full of ord intergers of English alphabet
 unique_char_arr_ord = [ord_ for ord_ in range(ord('a'), ord('z'))]   
-
+# Example: 
+print(ord('5'))    # 53
+print(ord('A'))    # 65
+print(ord('$'))    # 36
+# Output
+# 53
+# 65
+# 36
 
 
 ##############################
@@ -104,6 +111,115 @@ Output: [(8, 7), (5, 10), (3, 8, 4), (3, 5, 7)]
 f(0, mid-1) + current value + f(mid+1,len-1)
 # and the answer will be Math.max(aboveCombinedValue, Math.max(leftValueOnly, rightValueOnly)
 
+
+###########
+# another example https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/
+# Closest Pair of Points using Divide and Conquer algorithm
+
+
+
+
+
 ##########################################
 nums.copy()
 
+import math
+-math.inf 
+
+
+
+
+
+
+
+
+
+#########################
+# max()
+#########################
+#The max() function returns the largest item in an iterable. It can also be used 
+# to find the largest item between two or more parameters.
+#The max() function has two forms:
+#================
+# 1. to find the largest item in an iterable
+#================
+max(iterable, *iterables, key, default)
+
+# max() Parameters:
+# iterable - an iterable such as list, tuple, set, dictionary, etc.
+# *iterables (optional) - any number of iterables; can be more than one
+# key (optional) - key function where the iterables are passed and comparison is performed based on its return value
+# default (optional) - default value if the given iterable is empty
+
+
+# to find the largest item between two or more objects
+max(arg1, arg2, *args, key)
+
+##############
+
+Example
+numbers = [9, 34, 11, -4, 27]
+
+# find the maximum number
+max_number = max(numbers)
+print(max_number)
+
+# Output: 34
+
+#####
+
+# In the case of dictionaries, max() returns the largest key. Let's use the key 
+# parameter so that we can find the dictionary's key having the largest value.
+
+# Example 3: max() in dictionaries
+square = {2: 4, -3: 9, -1: 1, -2: 4}
+
+# the largest key
+key1 = max(square)
+print("The largest key:", key1)    # 2
+
+# the key whose value is the largest
+key2 = max(square, key = lambda k: square[k])
+
+print("The key with the largest value:", key2)    # -3
+
+# getting the largest value
+print("The largest value:", square[key2])    # 9
+
+# Output
+# The largest key: 2
+# The key with the largest value: -3
+# The largest value: 9
+
+#=========================
+# 2. max() without iterable
+#=========================
+
+# max() Syntax
+# To find the largest object between two or more parameters, we can use this syntax:
+
+max(arg1, arg2, *args, key)
+
+# max() parameters:
+# arg1 - an object; can be numbers, strings, etc.
+# arg2 - an object; can be numbers, strings, etc.
+# *args (optional) - any number of objects
+# key (optional) - key function where each argument is passed, and comparison is 
+# performed based on its return value
+# Basically, the max() function finds the largest item between two or more objects.
+
+##################
+
+# Example 4: Find the maximum among the given numbers
+# find max among the arguments
+result = max(4, -5, 23, 5)
+print("The maximum number is:", result)
+
+# Output
+# The maximum number is: 23
+
+
+##############################################################################
+
+
+max = float("-inf")

@@ -28,9 +28,9 @@ https://www.w3docs.com/snippets/git/how-to-move-branch-pointer-to-different-comm
 If you want to move a non-checked out branch to another commit, the easiest way is running the git 
 branch command with -f option, which determines where the branch HEAD should be pointing to:
 
-****** git branch -f <branch-name> <sha1-commit-hash> ******
+****** git branch -f <branch-name> <sha1-commit-hash/ or branch name> ******
 
-Be careful as this won't work if the branch you are trying to move is your current branch.
+Be careful as this won't work if the branch you gare trying to move is your current branch.
 To move a branch pointer, run the following command:
 
 git update-ref -m "reset: Reset <branch-name> to <sha1-commit-hash>" refs/heads/<branch-name> <sha1-commit-hash>
@@ -64,3 +64,19 @@ git merge <o/main>   (o - origin --> remote repository)
 ###################
 I suppose when on a certain branch then this command calls another branch/commit and merge
 with this current branch.
+
+
+
+###################################
+
+###################
+git pull     =   git fetch and git merge together   
+###################
+
+###################
+git pull --rebase     =   git fetch and git rebase together   
+###################
+
+Of course -- you already know git pull is just shorthand for a fetch and a merge. 
+Conveniently enough, git pull --rebase is shorthand for a fetch and a rebase!
+
