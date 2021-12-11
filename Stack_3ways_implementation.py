@@ -6,6 +6,7 @@
 *  queue.LifoQueue
 """
 #https://www.geeksforgeeks.org/stack-in-python/
+# one of tutorials VISUAL: https://www.log2base2.com/data-structures/stack/stack-data-structure.html
 #####################################
 
 #------------------------
