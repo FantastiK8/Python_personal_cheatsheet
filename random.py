@@ -221,5 +221,137 @@ print("The maximum number is:", result)
 
 ##############################################################################
 
+#MATH
 
 max = float("-inf")
+
+#####################
+
+combine two list using list.extend()
+
+###################
+
+# For loops in python have an else clause which runs after the loop completes if  a break was not found. (Just because you can doesn't mean you should!).
+Example:
+for item in container:
+    if search_something(item):
+        # Found it!
+        process(item)
+        break
+else:
+    # Didn't find anything..
+    not_found_in_container()
+
+#######
+#=============================
+# floor division
+floor = n // k
+
+#-------------------------
+# ceiling division
+
+# Solution 1: Convert floor to ceiling with negation
+def ceiling_division(n, d):
+    return -(n // -d)
+# Reminiscent of the Penn & Teller levitation trick, this "turns the world upside down (with negation), 
+# uses plain floor division (where the ceiling and floor have been swapped), and then turns the world 
+# right-side up (with negation again)"
+
+#--------------------------
+#Solution 2: Let divmod() do the work
+
+def ceiling_division(n, d):
+    q, r = divmod(n, d)
+    return q + bool(r)
+
+# The divmod() function gives (a // b, a % b) for integers (this may be less reliable with floats due 
+# to round-off error). The step with bool(r) adds one to the quotient whenever there is a non-zero remainder.
+
+#----------------------------
+# Solution 3: Adjust the numerator before the division
+def ceiling_division(n, d):
+    return (n + d - 1) // d
+
+# Translate the numerator upwards so that floor division rounds down to the intended ceiling. Note, 
+# this only works for integers.
+
+#-----------------------------
+# Solution 4: Convert to floats to use math.ceil()
+
+def ceiling_division(n, d):
+    return math.ceil(n / d)
+
+# The math.ceil() code is easy to understand, but it converts from ints to floats and back. This isn't 
+# very fast and it may have rounding issues. Also, it relies on Python 3 semantics where "true division" 
+# produces a float and where the ceil() function returns an integer.
+
+
+###########################################
+# HOW TO TERMINATE LOOP OR SKIP A PART OF IT
+# - BREAK
+# - CONTINUE
+# E.G. https://www.digitalocean.com/community/tutorials/how-to-use-break-continue-and-pass-statements-when-working-with-loops-in-python-3
+###########################################
+#======================
+#raise StopIteration:
+#======================
+# To prevent the iteration to go on forever, we can use the StopIteration statement.
+
+# In the __next__() method, we can add a terminating condition to raise an error if 
+# the iteration is done a specified number of times:
+#e.g.:
+  class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+
+  def __next__(self):
+    if self.a <= 20:
+      x = self.a
+      self.a += 1
+      return x
+    else:
+      raise StopIteration
+
+myclass = MyNumbers()
+myiter = iter(myclass)
+
+for x in myiter:
+  print(x)
+
+
+  #==========================
+  # BREAK
+  #==========================
+#   in Python, the break statement provides you with the opportunity to exit out of a loop when an external 
+#   condition is triggered. You’ll put the break statement within the block of code under your loop statement, 
+#   usually after a conditional if statement.
+
+  number = 0
+
+for number in range(10):
+    if number == 5:
+        break    # break here
+
+    print('Number is ' + str(number))
+
+print('Out of loop')
+
+#============================
+# CONTINUE
+#============================
+
+# You can use the continue statement to avoid deeply nested conditional code, or to optimize a loop by eliminating 
+# frequently occurring cases that you would like to reject.
+
+# The continue statement causes a program to skip certain factors that come up within a loop, but then continue 
+# through the rest of the loop.
+number = 0
+
+for number in range(10):
+    if number == 5:
+        continue    # continue here
+
+    print('Number is ' + str(number))
+
+print('Out of loop')

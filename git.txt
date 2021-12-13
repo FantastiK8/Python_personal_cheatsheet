@@ -228,4 +228,91 @@ git push origin main:newBranch
 
 
 
+####################
+git fetch origin foo
+####################
+Git will go to the foo branch on the remote, grab all the commits that aren't present 
+locally, and then plop them down onto the o/foo branch locally.
 
+We download only the commits from foo and place them on o/foo.
+
+You might be wondering -- why did git plop those commits onto the o/foo remote branch rather than just 
+plopping them onto my local foo branch? I thought the <place> parameter is a place that exists both 
+locally and on the remote?
+
+Well git makes a special exception in this case because you might have work on the foo branch that you 
+don't want to mess up!! This ties into the earlier lesson on git fetch -- it doesn't update your local 
+non-remote branches, it only downloads the commits (so you can inspect / merge them later).
+
+
+
+
+"Well in that case, what happens if I explicitly define both the source and destination with <source>:<destination>?"
+
+If you feel passionate enough to fetch commits directly onto a local branch, then yes you can specify that with a colon refspec. 
+You can't fetch commits onto a branch that is checked out, but otherwise git will allow this.
+
+Here is the only catch though -- <source> is now a place on the remote and <destination> is a local place to put those commits. 
+It's the exact opposite of git push, and that makes sense since we are transferring data in the opposite direction!
+
+That being said, developers rarely do this in practice. I'm introducing it mainly as a way to conceptualize 
+how fetch and push are quite similar, just in opposite directions.
+
+e.g.
+#########
+git fetch origin foo~1:bar
+#########
+"Well in that case, what happens if I explicitly define both the source and destination with <source>:<destination>?"
+
+If you feel passionate enough to fetch commits directly onto a local branch, then yes you can specify that with a colon refspec. 
+You can't fetch commits onto a branch that is checked out, but otherwise git will allow this.
+
+
+What if the destination doesn't exist before I run the command? Let's see the last slide but without bar existing beforehand.
+
+git fetch origin foo~1:bar
+
+See, it's JUST like git push. Git made the destination locally before fetching, just like git will make the destination on remote 
+before pushing (if it doesn't exist)
+
+git fetch   --> No args?
+If git fetch receives no arguments, it just downloads all the commits from the remote onto all the remote branches...
+
+
+
+########################
+GIT PUSH ORIGIN  :BRANCHNAME
+########################
+What does pushing "nothing" to a remote branch do? It deletes it!
+
+There, we successfully deleted the foo branch on remote by pushing the concept of "nothing" to it.
+
+###########################
+GIT FETCH ORIGIN  :BRANCHNAME
+###########################
+fetching "nothing" to a place locally actually makes a new branch.
+
+
+##########################
+Here are some equivalent commands in git:
+
+git pull origin foo is equal to:
+
+git fetch origin foo; git merge o/foo
+
+And...
+
+git pull origin bar~1:bugFix is equal to:
+
+git fetch origin bar~1:bugFix; git merge bugFix
+
+See? git pull is really just shorthand for fetch + merge, and all git pull cares about is where the commits 
+ended up (the destination argument that it figures out during fetch).
+
+###############################
+Does it work with source and destination too? You bet! Let's see that:
+
+git pull origin main:NewBranch
+
+Wow, that's a TON in one command. We created a new branch locally named foo, downloaded 
+commits from remote's main onto that branch foo, and then merged that branch into our currently checked out branch bar
