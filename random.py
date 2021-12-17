@@ -355,3 +355,71 @@ for number in range(10):
     print('Number is ' + str(number))
 
 print('Out of loop')
+
+################################
+# ACCESSING ONLY ODD OR EVEN INDEXES ITEMS FROM A LIST:
+#################################
+#========================
+# OPTION 1: ONLINER LOOP AND % MODULUS
+#========================
+odd = [num for i, num in enumerate(nums) if i%2 != 0]
+even = [num for i, num in enumerate(nums) if i%2 == 0]
+
+#========================
+# OPTION 2: ONLINER LOOP AND & OPERATOR
+#========================
+x = [10, 20, 30, 40, 50, 60, 70]
+y = [j for i, j in enumerate(x) if i&1]
+# [20, 40, 60]
+
+# Explanation
+# Bitwise AND operator is used with 1, and the reason it works is because, odd number when written 
+# in binary must have its first digit as 1. Let's check:
+
+23 = 1 * (2**4) + 0 * (2**3) + 1 * (2**2) + 1 * (2**1) + 1 * (2**0) = 10111
+14 = 1 * (2**3) + 1 * (2**2) + 1 * (2**1) + 0 * (2**0) = 1110
+
+# AND operation with 1 will only return 1 (1 in binary will also have last digit 1), iff the value is odd.
+
+# P.S: You can tactically use this method if you want to select odd and even columns in a dataframe. 
+# Let's say x and y coordinates of facial key-points are given as columns x1, y1, x2, etc... To normalize 
+# the x and y coordinates with width and height values of each image you can simply perform:
+
+for i in range(df.shape[1]):
+    if i&1:
+        df.iloc[:, i] /= heights
+    else:
+        df.iloc[:, i] /= widths
+
+#========================
+# OPTION 3: SLICING
+#========================
+l = L[1::2]
+
+# And this is all. The result will contain the elements placed on the following positions 
+# (0-based, so first element is at position 0, second at 1 etc.):
+# 1, 3, 5
+# so the result (actual numbers) will be:
+# 2, 4, 6
+
+# Explanation
+# The [1::2] at the end is just a notation for list slicing. Usually it is in the following form:
+
+# some_list[start:stop:step]
+
+
+#################################
+#ACCESS ODD OR EVEN NUMBERS IN A LIST
+################################
+
+#You can make use of bitwise AND operator &:
+
+x = [1, 2, 3, 4, 5, 6, 7]
+y = [i for i in x if i&1]
+# [1, 3, 5, 7]
+# This will give you the odd elements in the list. 
+
+# Explanation
+# Bitwise AND operator is used with 1, and the reason it works is because, odd number when written 
+# in binary must have its first digit as 1. 
+

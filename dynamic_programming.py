@@ -1,0 +1,1 @@
+So, instead of re-computing multiple times, we can store the result of a function call and directly reuse it on future calls instead of recomputing from scratch. This calls for dynamic programming, or memoization to be more specific.
